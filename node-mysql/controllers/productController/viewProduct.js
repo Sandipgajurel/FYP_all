@@ -1,12 +1,10 @@
-
-
 const {validationResult} = require('express-validator');
 const conn = require('../../dbConnection').promise();
 
 exports.productsView = async (req,res,next) => {
 try{
-const id = req.params.id;
-const [row] = await conn.execute("SELECT * FROM products WHERE id=?",[id]);
+const productId = req.params.productId;
+const [row] = await conn.execute("SELECT * FROM products WHERE productId=?",[productId]);
 
 if(row.length > 0){
     return res.json({

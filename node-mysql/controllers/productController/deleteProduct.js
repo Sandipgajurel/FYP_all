@@ -7,10 +7,10 @@ exports.deleteproduct = async (req,res,next) => {
         return res.status(422).json({ errors: errors.array() });
     }
     try{
-const id = req.params.id;
+const productId = req.params.productId;
 // var query = "DELETE FROM product WHERE id=?";
 // conn.query(query,[id],
-    const [rows] = await conn.execute("DELETE FROM products WHERE id=?",[id]);
+    const [rows] = await conn.execute("DELETE FROM products WHERE productId=?",[productId]);
     // (err,results)=>{
     // if(!err){
         if(rows.affectedRows === 1){

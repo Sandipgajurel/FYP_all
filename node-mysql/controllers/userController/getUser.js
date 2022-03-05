@@ -19,8 +19,8 @@ exports.getUser = async (req,res,next) => {
         const decoded = jwt.verify(theToken, 'the-super-strong-secrect');
 
         const [row] = await conn.execute(
-            "SELECT `id`,`name`,`email` FROM `users` WHERE `id`=?",
-            [decoded.id]
+            "SELECT `id`,`name`,`email` FROM `users` WHERE `userId`=?",
+            [decoded.userId]
         );
 
         if(row.length > 0){

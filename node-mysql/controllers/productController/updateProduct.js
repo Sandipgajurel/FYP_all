@@ -7,18 +7,18 @@ exports.productupdate = async (req,res,next) => {
         return res.status(422).json({ errors: errors.array() });
     }
     try{
-const id = req.params.id;
+const productId = req.params.productId;
 // let product = req.body;
 // var query = "UPDATE product SET name=?,description=?,price=?,type=? WHERE id=?";
 // conn.query(query,[req.body.name,req.body.description,req.body.price,req.body.type,id],(err,results)=>{
    
-    const [rows] = await conn.execute("UPDATE products SET name=?,description=?,price=?,type=?,image=? WHERE id=?",[
+    const [rows] = await conn.execute("UPDATE products SET name=?,description=?,price=?,type=?,image=? WHERE productId=?",[
         req.body.name,
         req.body.description,
         req.body.price,
         req.body.type,
         req.body.image,
-        id
+        productId
     ]);
    
    if (rows.affectedRows === 1){
