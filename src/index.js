@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import SignUpForm from './Containers/Signup';
+import Navbar from './Containers/Navbar';
+import Footer from './Containers/Footer';
+import LoginForm from './Containers/Login';
 ReactDOM.render(
-  <React.StrictMode>
+    <BrowserRouter>
     <App />
-  </React.StrictMode>,
+    {/* <LoginForm /> */}
+    {/* <SignUpForm /> */}
+    {/* <Navbar /> */}
+    {/* <Footer /> */}
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
