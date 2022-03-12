@@ -47,7 +47,7 @@ result = await result.json()
           
 </div>
 <br />
-<div className ="form-group">
+<div className ="form-group" style={{paddingBottom:"10px"}} >
          <label htmlFor="email">Email</label><br />
          <TextField    variant="outlined" type="email"   value={email} onChange={(e)=>setEmail(e.target.value)} required />
          

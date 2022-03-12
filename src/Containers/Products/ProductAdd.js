@@ -30,7 +30,6 @@ let result = await fetch("http://localhost:3001/product/create",{
   }
 })
 result = await result.json()
-// alert("User has been added sucessfully");
 }
   return (
     <React.Fragment>

@@ -29,7 +29,7 @@ export default function LoginForm({Login, error}) {
       <Container maxWidth="sm"style={{paddingTop:"30px"}} >
         <Typography component="div" style={{ backgroundColor: '#d7d9db', height: '90vh' }} >
 
-        <form onSubmit={submitHandler} style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '70vh'}} >
+        <form onSubmit={handleSubmit} style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '70vh'}} >
      
      <div className ="form-inner">
        <h2 style={{textAlign:"center"}}>Login</h2>< br/>
@@ -48,7 +48,7 @@ export default function LoginForm({Login, error}) {
      
 </div>
 <br />
-<Button variant="outlined" color="primary" type="submit" value="Login">
+<Button variant="outlined" color="primary" type="submit" value="Login" >
   login
 </Button>
      </div>
