@@ -6,12 +6,9 @@ exports.productupdate = async (req,res,next) => {
     if(!errors.isEmpty()){
         return res.status(422).json({ errors: errors.array() });
     }
-    try{
-const productId = req.params.productId;
-// let product = req.body;
-// var query = "UPDATE product SET name=?,description=?,price=?,type=? WHERE id=?";
-// conn.query(query,[req.body.name,req.body.description,req.body.price,req.body.type,id],(err,results)=>{
-   
+  
+try{
+const productId = req.params.productId; 
     const [rows] = await conn.execute("UPDATE products SET name=?,description=?,price=?,type=?,image=? WHERE productId=?",[
         req.body.name,
         req.body.description,

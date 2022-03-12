@@ -4,7 +4,8 @@ const conn = require('../../dbConnection').promise();
 exports.productsView = async (req,res,next) => {
 try{
 const productId = req.params.productId;
-const [row] = await conn.execute("SELECT * FROM products");
+const [row] = await conn.execute("SELECT `productId`, `name`,`description`,`price`, `type`,`image` FROM products WHERE `productId`=?",[productId]);
+
 
 if(row.length > 0){
     return res.json({
