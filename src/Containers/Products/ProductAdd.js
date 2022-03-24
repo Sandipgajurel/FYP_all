@@ -56,7 +56,7 @@ result = await result.json()
 <div >
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name">price</label> < br />
-         <TextField  variant="outlined" type="text" value={price} onChange={(e)=>setPrice(e.target.value)} required style={{paddingBottom:"10px",width:'300px'}} />
+         <TextField  variant="outlined" type="number" value={price} onChange={(e)=>setPrice(e.target.value)} required style={{paddingBottom:"10px",width:'300px'}} />
         </div>
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name"> Product Type</label> < br />

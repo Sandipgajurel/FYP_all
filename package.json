@@ -43,8 +43,6 @@
   "start": "NODE_ENV=development nodemon ./bin/www",
   "webpack": "webpack-dev-server --config ./webpack.config.js --mode development",
   
-  "proxy": "http://localhost:3001",
-  "allowedHost":[],
   "browserslist": {
     "production": [
       ">0.2%",

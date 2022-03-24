@@ -11,13 +11,14 @@ import Dashboard from "./Containers/Dashboard";
 import ProductAdd from "./Containers/Products/ProductAdd";
 import ProductView from "./Containers/Products/ViewProduct";
 import EditProduct from "./Containers/Products/editProduct";
+import LoginApp from "./Containers/loginapp";
 const App = () => {
 
   return (
    <> 
    <Routes>
      <Route exact path='/' element={<HomePage />}></Route>
-     <Route exact path='/login' element={<LoginForm />}></Route>
+     <Route exact path='/login' element={< LoginApp />}></Route>
      <Route exact path='/signup' element={<SignUpForm />}></Route>
      <Route exact path='/Dashboard' element={<Dashboard />}></Route>
      <Route exact path='/ProductAdd' element={<ProductAdd />}></Route>

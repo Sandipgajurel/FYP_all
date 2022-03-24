@@ -42,7 +42,6 @@ const getdata  = () =>{
 
 useEffect( ()=>{
   getdata();
-  updateProduct();
 } ,[] )
 
 // async function updateProduct (){
@@ -60,16 +59,22 @@ useEffect( ()=>{
 // }
 function updateProduct (){
   let itemss ={ productId, name, description, price, type, image}
-// console.warn("itemss",itemss)
+
 axios
     .put(
 `http://localhost:3001/updateproduct/ +${productId}`,{
+  name,
+  description,
+  price,
+  type,
+  image,
 method:'PUT',
 headers:{
   'Accept':'application/json',
   'Content-Type':'application/json'
 },
 body:JSON.stringify(itemss)
+
 })
     .then((result) =>{
       result.json().then((resp)=>{
