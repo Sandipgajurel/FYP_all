@@ -24,6 +24,7 @@ const App = () => {
      <Route exact path='/ProductAdd' element={<ProductAdd />}></Route>
      <Route exact path='/ProductView' element={<ProductView />}></Route>
      <Route exact path='/editProduct/:productId' element={< EditProduct />}></Route>
+
      <Route path='*' element={<Error />} />
    </Routes>
    

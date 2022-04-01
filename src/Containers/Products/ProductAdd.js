@@ -1,14 +1,12 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { TextField, Button } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { height } from '@mui/system';
-
-
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from 'axios';
+import { Toast } from 'react-bootstrap';
 export default function ProductAdd() {
 
  const [name, setName] = useState("")
@@ -17,19 +15,27 @@ const [price, setPrice] = useState("")
 const [type, setType] = useState("")
 const [image, setImage] = useState("")
 
-async function add(){
-  let item ={name,description,price,type,image}
-  console.log(item)
+const addProductHandler = async (e) => {
+  // let item ={name,description,price,type,image}
+  // console.log(item)
+e.preventDefault()
 
-let result = await fetch("http://localhost:3001/product/create",{
-  method:"POST",
-  body:JSON.stringify(item),
-  headers:{
-    "Content-Type":"application/json",
-    "Accept":"application/json"
-  }
+  const formData = new FormData()
+  formData.append('name',name)
+  formData.append('description',description)
+  formData.append('price',price)
+  formData.append('type',type)
+  formData.append('image',image)
+
+  axios.post("http://localhost:3001/product/create", formData)
+  .then((res) => {
+  if (res.status === 201) {
+    alert("product successfully added");
+    window.location.reload();
+  } else Promise.reject();
 })
-result = await result.json()
+.catch((err) => alert("Something went wrong"));
+
 }
   return (
     <React.Fragment>
@@ -40,7 +46,7 @@ result = await result.json()
         <div className="card-header" style={{textAlign:'center'}}>
           <h3 className="card-title text-dark" >Add New Product</h3>
         </div>
-        <form type="submit"  style={{ display:'flex', paddingLeft:'110px',display: 'flex',  justifyContent:'center', alignItems:'center' }} >
+        <form onSubmit={addProductHandler} method='POST' encType='multipart/form-data' style={{ display:'flex', paddingLeft:'110px',display: 'flex',  justifyContent:'center', alignItems:'center' }} >
         
      <div className ="form-inner">
      
@@ -56,15 +62,20 @@ result = await result.json()
 <div >
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name">price</label> < br />
-         <TextField  variant="outlined" type="number" value={price} onChange={(e)=>setPrice(e.target.value)} required style={{paddingBottom:"10px",width:'300px'}} />
+         <TextField  variant="outlined" type="number" min="0" value={price} onChange={(e)=>setPrice(e.target.value)} required style={{paddingBottom:"10px",width:'300px'}} />
         </div>
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name"> Product Type</label> < br />
-         <TextField  variant="outlined" type="text" value={type} onChange={(e)=>setType(e.target.value)} required style={{paddingBottom:"50px",width:'300px'}} />
+         <TextField  variant="outlined" type="text" value={type} onChange={(e)=>setType(e.target.value)} required style={{paddingBottom:"15px",width:'300px'}} />
         </div>
-        
 
-<div className="custom-file" style={{paddingBottom:"10px",float:"right",marginRight:'15px'}}>
+
+        <div className ="form-group" style={{paddingBottom:"10px",float:"right",marginRight:'15px'}} >
+        <Form.Label>Upload image</Form.Label>
+        <Form.Control type='file'  onChange={(e) =>setImage (e.target.files[0])} name='image' size="md" />
+        </div>
+
+{/* <div className="custom-file" style={{paddingBottom:"10px",float:"right",marginRight:'15px'}}>
                     <input
                       type="file"
                       accept="image/png, image/gif, image/jpeg"
@@ -80,9 +91,9 @@ result = await result.json()
                       Select Image
                     </label>
 
-                  </div>
+                  </div> */}
   
-<Button type='submit' variant="outlined" color="primary" style={{float:"right",marginRight:'15px', height:'30px',width:'80px'}} onClick={add}>
+<Button type='submit' variant="outlined" color="primary" style={{float:"right",marginRight:'15px', height:'30px',width:'80px'}}>
  Add
 </Button>
 

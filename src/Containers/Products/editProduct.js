@@ -4,13 +4,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { TextField, Button } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { height } from '@mui/system';
 import axios from 'axios';
 import { useParams } from 'react-router-dom'
-import { Toast } from 'react-bootstrap';
-//import {withRouter} from 'react-router-dom';
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+
+
 const EditProduct = () => {
 const [data, setData] = useState([]);
 
@@ -57,31 +55,48 @@ useEffect( ()=>{
 // })
 // result = await result.json()
 // }
-function updateProduct (){
-  let itemss ={ productId, name, description, price, type, image}
+const updateProduct = async (e) => {
+  //let itemss ={ productId, name, description, price, type, image}
+  e.preventDefault()
 
+  const formData = new FormData()
+  formData.append('name',name)
+  formData.append('description',description)
+  formData.append('price',price)
+  formData.append('type',type)
+  formData.append('image',image)
 axios
     .put(
-`http://localhost:3001/updateproduct/ +${productId}`,{
-  name,
-  description,
-  price,
-  type,
-  image,
-method:'PUT',
-headers:{
-  'Accept':'application/json',
-  'Content-Type':'application/json'
-},
-body:JSON.stringify(itemss)
+`http://localhost:3001/updateproduct/ +${productId}`,
+//{
+//   name,
+//   description,
+//   price,
+//   type,
+//   image,
 
-})
-    .then((result) =>{
-      result.json().then((resp)=>{
-console.warn(resp)
+// method:'PUT',
+// headers:{
+//   'Accept':'application/json',
+//   'Content-Type':'application/json'
+// },
+// body:JSON.stringify(itemss)
+//},
+   formData) .then((res) => {
+    if (res.status === 201) {
+      alert("product successfully updated");
+      window.location.reload();
+    } else Promise.reject();
+  })
+  .catch((err) => alert("Something went wrong"));
+   
+//    .then((result) =>{
+//       result.json().then((resp)=>{
+// console.warn(resp)
        
-      })
-    })
+
+//      })
+//    })
 }
 
  return (
@@ -93,7 +108,7 @@ console.warn(resp)
         <div className="card-header" style={{textAlign:'center'}}>
           <h3 className="card-title text-dark" >Edit Product</h3>
         </div>
-        <form type="submit"  style={{ display:'flex', paddingLeft:'110px',display: 'flex',  justifyContent:'center', alignItems:'center' }}  >
+        <form type="submit" onSubmit={updateProduct} method='POST' encType='multipart/form-data' style={{ display:'flex', paddingLeft:'110px',display: 'flex',  justifyContent:'center', alignItems:'center' }}  >
         
      <div className ="form-inner">
      
@@ -109,15 +124,19 @@ console.warn(resp)
 <div >
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name">price</label> < br />
-         <TextField id= "price" variant="outlined" type="text" value={price} onChange={(e) =>{setPrice(e.target.value)}}  required style={{paddingBottom:"10px",width:'300px'}} />
+         <TextField id= "price" variant="outlined" type="number" min="0" value={price} onChange={(e) =>{setPrice(e.target.value)}}  required style={{paddingBottom:"10px",width:'300px'}} />
         </div>
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name"> Product Type</label> < br />
-         <TextField id="type" value={type} onChange={(e) =>{setType(e.target.value)}} variant="outlined" type="text"  required style={{paddingBottom:"50px",width:'300px'}} />
+         <TextField id="type" value={type} onChange={(e) =>{setType(e.target.value)}} variant="outlined" type="text"  required style={{paddingBottom:"15px",width:'300px'}} />
         </div>
         
+        <div className ="form-group" >
+        <Form.Label>Upload image</Form.Label>
+        <Form.Control type='file'  onChange={(e) =>setImage (e.target.files[0])} name='image' size="md" />
+        </div>
 
-<div className="custom-file" style={{paddingBottom:"10px",float:"right",marginRight:'15px'}}>
+{/* <div className="custom-file" style={{paddingBottom:"10px",float:"right",marginRight:'15px'}}>
                     <input
                       type="file"
                       accept="image/png, image/gif, image/jpeg"
@@ -134,11 +153,11 @@ console.warn(resp)
                       Select Image
                     </label>
 
-                  </div>
+                  </div> */}
   
 <Button 
-onClick={() => {updateProduct() }}
- type='submit'  variant="outlined" color="primary" style={{float:"right",marginRight:'15px', height:'50px',width:'90px'}}>
+// onClick={() => {updateProduct() }}
+ type='submit'  variant="outlined" color="primary" required  style={{float:"right",marginRight:'15px',paddingBottom:"20px",paddingTop:"20px", height:'50px',width:'90px'}}>
  Update Product
 </Button>
 

@@ -15,7 +15,7 @@ const Footer = () => <>
       
         <AppBar position="static" elevation={0} component="footer" style={{backgroundColor:'#1d1e1f',
             
-            //marginTop:'auto',
+            marginTop:'auto',
             width: "100%",
             height: '60px'
         }} >
