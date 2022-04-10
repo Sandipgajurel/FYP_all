@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {body} = require('express-validator');
+const express = require('express')
 //user
 const {register} = require('./controllers/userController/userRegister');
 const {login} = require('./controllers/userController/userLogin');
@@ -17,7 +18,33 @@ const {orderupdate} = require('./controllers/orderController/updateOrder');
 const {deleteorder} = require('./controllers/orderController/deleteOrder');
 const { application } = require('express');
 const db_connection = require('./dbConnection');
+// image upload 
+const http = require("http");
+const fs = require("fs");
+const url = require("url");
 
+
+
+const cors = require("cors");
+const bodyParser = require('body-parser');
+const path = require('path')
+const multer = require('multer')
+
+//! Use of Multer
+var storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, './client/public/images/')     // './public/images/' directory name where save the file
+    },
+    // filename: (req, file, callBack) => {
+    //     callBack(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    // }
+})
+
+ 
+var upload = multer({
+    storage: storage
+}).single('image')
+ 
 
 //user
 router.post('/register', [
@@ -33,6 +60,21 @@ router.post('/register', [
     body('password',"The Password must be of minimum 4 characters length").notEmpty().trim().isLength({ min: 4 }),
 ], register);
 
+// serving static files
+router.use('/client/public/images', express.static(__dirname + '/client/public/images'));
+
+router.get('/getProductImages',(req,res) =>{    
+    var query = "select image from products";
+        db_connection.query(query,(err,results)=>{
+            if(!err){
+                return res.send(results);
+            }
+            else{
+                return res.status(500).json(err);
+            }
+    
+    })}
+    )
 
 router.post('/login',[
     body('email',"Invalid email address")
@@ -42,13 +84,13 @@ router.post('/login',[
     body('password',"The Password must be of minimum 4 characters length").notEmpty().trim().isLength({ min: 4 }),
 ],login);
 
-router.get('/getuser/:userId',getUser);
+router.get('/getuser',getUser);
 router.delete('/deleteuser/:userId',deleteuser);
 router.patch('/userupdate/:userId',userupdate);
 
 
-//product
-router.post('/product/create',[
+//product 
+router.post('/product/create',upload,[
     body('name',"enter product name")
     .notEmpty()
     ],products);
@@ -69,9 +111,23 @@ var query = "select * from products";
 })}
 )
 
+// router.get('/getproductwithid/:productId',(req,res) =>{    
+//     const productId = req.params.productId;
+//     var query =("SELECT `productId`, `name`,`description`,`price`, `type`,`image` FROM products WHERE `productId`=?",[productId]);
+//         db_connection.query(query,(err,results)=>{
+//             if(!err){
+//                 return res.send(results);
+//             }
+//             else{
+//                 return res.status(500).json(err);
+//             }
+    
+//     })}
+//     )
+
 
 router.get ('/getproductwithid/:productId', productsView);
-router.put('/updateproduct/:productId', productupdate);
+router.put('/updateproduct/:productId',upload, productupdate);
 router.delete('/deleteproduct/:productId', deleteproduct);
 
 //orders

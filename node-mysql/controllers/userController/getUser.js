@@ -5,22 +5,22 @@ exports.getUser = async (req,res,next) => {
 
     try{
 
-        if(
-            !req.headers.authorization ||
-            !req.headers.authorization.startsWith('Bearer') ||
-            !req.headers.authorization.split(' ')[1]
-        ){
-            return res.status(422).json({
-                message: "Please provide the token",
-            });
-        }
+        // if(
+        //     !req.headers.authorization ||
+        //     !req.headers.authorization.startsWith('Bearer') ||
+        //     !req.headers.authorization.split(' ')[1]
+        // ){
+        //     return res.status(422).json({
+        //         message: "Please provide the token",
+        //     });
+        // }
 
-        const theToken = req.headers.authorization.split(' ')[1];
-        const decoded = jwt.verify(theToken, 'the-super-strong-secrect');
-
+        // const theToken = req.headers.authorization.split(' ')[1];
+        // const decoded = jwt.verify(theToken, 'the-super-secrect');
+const email = req.body.email;
         const [row] = await conn.execute(
-            "SELECT `id`,`name`,`email` FROM `users` WHERE `userId`=?",
-            [decoded.userId]
+            "SELECT `name`,`userId` FROM `users` WHERE `email`=?",
+            [email]
         );
 
         if(row.length > 0){

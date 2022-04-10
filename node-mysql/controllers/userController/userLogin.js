@@ -22,6 +22,7 @@ exports.login = async (req,res,next) =>{
             return res.status(422).json({
                 message: "Invalid email address",
             });
+            
         }
 
         const passMatch = await bcrypt.compare(req.body.password, row[0].password);
@@ -31,10 +32,11 @@ exports.login = async (req,res,next) =>{
             });
         }
 
-        const theToken = jwt.sign({id:row[0].id},'the-super-strong-secrect',{ expiresIn: '1h' });
+        const theToken = jwt.sign({id:row[0].id},'the-super-secret',{ expiresIn: '1' });
 
         return res.json({
-            token:theToken
+            token:theToken,
+            email:req.body.email
         });
 
     }

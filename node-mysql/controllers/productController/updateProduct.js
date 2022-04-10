@@ -14,7 +14,7 @@ const productId = req.params.productId;
         req.body.description,
         req.body.price,
         req.body.type,
-        req.body.image,
+        req.file.path,
         productId
     ]);
    
