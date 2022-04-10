@@ -6,6 +6,10 @@ import Container from '@material-ui/core/Container';
 import { TextField, Button } from '@material-ui/core';
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useNavigate } from 'react-router'
 import { Toast } from 'react-bootstrap';
 export default function ProductAdd() {
 
@@ -15,6 +19,9 @@ const [price, setPrice] = useState("")
 const [type, setType] = useState("")
 const [image, setImage] = useState("")
 
+toast.configure()
+
+const navigate = useNavigate();
 const addProductHandler = async (e) => {
   // let item ={name,description,price,type,image}
   // console.log(item)
@@ -30,11 +37,12 @@ e.preventDefault()
   axios.post("http://localhost:3001/product/create", formData)
   .then((res) => {
   if (res.status === 201) {
-    alert("product successfully added");
-    window.location.reload();
+    toast("product successfully added");
+    navigate('/Dashboard')
+    //window.location.reload();
   } else Promise.reject();
 })
-.catch((err) => alert("Something went wrong"));
+.catch((err) => toast("Something went wrong"));
 
 }
   return (

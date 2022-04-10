@@ -40,65 +40,29 @@ const Navbar = () => {
 
   return (
     <>
-    <AppBar position="static" style={{backgroundColor:'#a3780a'}} >
+      <AppBar position="static" style={{ backgroundColor: '#a3780a' }} >
 
-      <Toolbar>
-      
-       {/* <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          className={classes.menuButton}
-        >
-          <MenuIcon />
-          </IconButton>
-        </InputLabel>
-        <Select
-        
-        >
-          <MenuItem ><Button color="inherit" onClick={handleOpen}>
-          Home
-        </Button></MenuItem>
-          <MenuItem ><Button color="inherit" onClick={handleOpen}>
-          Shop
-        </Button></MenuItem>
-          <MenuItem ><Button color="inherit" onClick={handleOpen}>
-          Contact
-        </Button></MenuItem>
-        <MenuItem ><Button color="inherit" onClick={handleOpen}>
-        About
-        </Button></MenuItem>
-        <MenuItem ><Button color="inherit" onClick={handleOpen}>
-          Customer Care
-        </Button></MenuItem>
+        <Toolbar>
 
+          <Typography variant="h6" className={classes.title} style={{ textAlign: 'left', fontSize: '25px' }}>
+            Online Bag Shop
+          </Typography>
+          <a href="www.facebook.com">
+            <Icon icon="mdi:facebook" style={{ paddingLeft: '10px', enableBackground: 'new 0 0 24 24', height: '35', viewBox: '0 0 24 24', width: '35' }} />
+          </a>
+          <a href="www.instragram.com">
+            <Icon icon="mdi:instagram" style={{ paddingLeft: '10px', enableBackground: 'new 0 0 24 24', height: '35', viewBox: '0 0 24 24', width: '35' }} />
+          </a>
 
-        </Select>
-      </FormControl>
-    </Box> */}
+          {/* shopping cart */}
+          <Badge color="secondary" >
+            <ShoppingCartIcon style={{ paddingLeft: '10px', enableBackground: 'new 0 0 24 24', height: '35', viewBox: '0 0 24 24', width: '35' }}
+            />{" "}
+          </Badge>
 
-        <Typography variant="h6" className={classes.title} style={{textAlign:'left', fontSize:'25px'}}>
-          Online Bag Shop
-        </Typography>
-        <a href="www.facebook.com">
-        <Icon icon="mdi:facebook"  style={{paddingLeft:'10px',enableBackground:'new 0 0 24 24', height:'35', viewBox:'0 0 24 24', width:'35'}} />  
-        </a>
-        <a href="www.instragram.com">
-        <Icon icon="mdi:instagram"  style={{paddingLeft:'10px',enableBackground:'new 0 0 24 24', height:'35', viewBox:'0 0 24 24', width:'35'}} />
-        </a>
-
-        {/* shopping cart */}
-        <Badge color="secondary" >
-          <ShoppingCartIcon style={{paddingLeft:'10px',enableBackground:'new 0 0 24 24', height:'35', viewBox:'0 0 24 24', width:'35'}} 
-         />{" "}
-        </Badge>
-
-      </Toolbar>
-      {/* <ModalDialog open={open} handleClose={handleClose} /> */}
-    </AppBar>
+        </Toolbar>
+        {/* <ModalDialog open={open} handleClose={handleClose} /> */}
+      </AppBar>
     </>
   );
 }

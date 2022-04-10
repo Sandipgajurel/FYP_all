@@ -1,12 +1,14 @@
 import * as  React from 'react';
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { TextField, Button } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUpForm() {
 
@@ -14,7 +16,20 @@ export default function SignUpForm() {
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
 
-async function signup(){
+toast.configure()
+
+const navigate = useNavigate();
+const routetohome = () => {
+  let path = `/`;
+  navigate(path);
+}
+
+function sucess() {
+  return ( toast('User has been added sucessfully'),
+   routetohome()
+   )}
+  
+async function signup(req, res, next ){
   let item ={name,email,password}
   console.log(item)
 
@@ -26,8 +41,7 @@ let result = await fetch("http://localhost:3001/register",{
     "Accept":"application/json"
   }
 })
-result = await result.json()
-// alert("User has been added sucessfully");
+result = await result.json() 
 }
   return (
     <React.Fragment>
@@ -65,7 +79,7 @@ result = await result.json()
           labelPlacement="end"
         />
 </div>
-<Button type='submit' variant="outlined" color="primary" style={{float:"left"}} onClick={signup}>
+<Button type='submit' variant="outlined" color="primary" style={{float:"left"}} onClick={signup} >
   Sign Up
 </Button>
      </div>

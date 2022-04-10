@@ -3,13 +3,15 @@ import LoginForm from "./Login";
 import { useNavigate } from 'react-router-dom';
 import  Dashboard  from "./Dashboard";
 import { Link } from 'react-router-dom';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginApp  () {
 const adminUser = {
   email:"admin@admin.com",
   password:"sandip123"
 }
-
+toast.configure()
 let navigate = useNavigate(); 
     const routeChange = () =>{ 
       let path = `/Dashboard`; 
@@ -25,11 +27,14 @@ const Login = details  => {
   console.log(details);
 
   if (details.email == adminUser.email && details.password == adminUser.password)
-{console.log("logged in");
+{
+  console.log("logged in")
+  toast('Logged In')
 setUser({
   email: details.email
 });
 }else {
+  toast('Details doesnot matched')
 console.log("details doesnot match!")
 setError("details doesnot match!")
 }

@@ -17,11 +17,12 @@ export default function LoginForm({Login, error}) {
     e.preventDefault();
     Login(details);
   }
- let navigate = useNavigate();
-  const routetosignuop = () =>{
-    let path = `/signup`; 
-    navigate(path);
-  }
+
+//  let navigate = useNavigate();
+//   const routetosignuop = () =>{
+//     let path = `/signup`; 
+//     navigate(path);
+//   }
 
   return (
     <React.Fragment>
@@ -44,7 +45,7 @@ export default function LoginForm({Login, error}) {
 <br />
 <div className ="form-group">
          <label htmlFor="Password">Password</label><br />
-         <Input id="password" label="password" variant="outlined" input type="password"  onChange={e => setDetails({...details, password: e.target.value})} value={details.password} required />
+         <Input id="password" label="password" variant="outlined"  type="password"  onChange={e => setDetails({...details, password: e.target.value})} value={details.password} required />
      
 </div>
 <br />
@@ -55,7 +56,7 @@ export default function LoginForm({Login, error}) {
    </form>
    <br />
    <br />
-<h3 style={{float:"right", marginRight:"10px"}}>Don't have account? <button type="button" className="btn btn-default" onClick={routetosignuop} >Sign up</button></h3>
+{/* <h3 style={{float:"right", marginRight:"10px"}}>Don't have account? <button type="button" className="btn btn-default" onClick={routetosignuop} >Sign up</button></h3> */}
 
    </Typography>
       </Container>

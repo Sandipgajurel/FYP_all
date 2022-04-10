@@ -5,9 +5,11 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
+import { useNavigate } from 'react-router'
 import { useParams } from 'react-router-dom'
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditProduct = () => {
 const [data, setData] = useState([]);
@@ -19,6 +21,7 @@ const [type, setType] = useState("");
 const [image, setImage] = useState("");
 //const [productId, setProductId] = useState(null);
 
+toast.configure()
 
 const { productId } = useParams();
 const getdata  = () =>{
@@ -37,7 +40,12 @@ const getdata  = () =>{
 })
 
 }
-
+let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+      let path = `/Dashboard`; 
+      navigate(path);
+    }
+    
 useEffect( ()=>{
   getdata();
 } ,[] )
@@ -84,11 +92,12 @@ axios
 //},
    formData) .then((res) => {
     if (res.status === 201) {
-      alert("product successfully updated");
-      window.location.reload();
+      toast("product successfully updated");
+      // window.location.reload();
+      routeChange();
     } else Promise.reject();
   })
-  .catch((err) => alert("Something went wrong"));
+  .catch((err) => toast("Something went wrong"));
    
 //    .then((result) =>{
 //       result.json().then((resp)=>{
