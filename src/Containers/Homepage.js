@@ -89,10 +89,7 @@ function Homepage({ handleClick, setShow }) {
                                     <CDBSidebarMenuItem icon="table" onClick={() => setShow(false)} >Your Cart</CDBSidebarMenuItem>
                                 </NavLink> */}
                             
-                                     {/* <Link to={`/EditUser/${email}`}>
-                        <button type="button" title="Edit"
-                          className="btn btn-icon btn-sm" style={{ color: "white" }}><i className="fa fa-edit"></i></button>
-                      </Link> */}
+                                    
                             
 
 

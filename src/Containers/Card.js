@@ -62,14 +62,16 @@ const Cardimage = () => {
             <h1 style={{fontStyle:'italic'}}>Featured Products</h1>
             <div className='item-container' >
               {products.map((product) => (
-                <Card key={product.productId} className='shadow-md m2 p3 rounded'>
-                  <CardActionArea>
+                <Card key={product.productId} className='shadow-md m2 p3 rounded' style={{width:'250px'}}>
+                  <CardActionArea style={{alignItems:'center'}}>
                     {/* <img src={'http://localhost:3001/images/image-1648718787557.jpg'} alt='' /> */}
                     <img src={`http://localhost:3001/${product.image} `} alt='' />
+                   <div style={{textAlign:'center'}}>
                     <h3>{product.name}</h3>
                     <h4>Price : {product.price}</h4>
-                    <p>{product.description}</p>
+                    <p>description: {product.description}</p>
                     <p>Type : {product.type}</p>
+                    </div>
                   </CardActionArea>
                   {/* <CardActions>
                     <Button size="small" color="primary">

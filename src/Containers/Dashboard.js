@@ -52,6 +52,10 @@ function Dashboard() {
                 <NavLink exact to="/ProductView" activeClassName="activeClicked">
                   <CDBSidebarMenuItem icon="columns">Products</CDBSidebarMenuItem>
                 </NavLink>
+                <NavLink exact to="/orderview" activeClassName="activeClicked">
+                  <CDBSidebarMenuItem icon="columns">Orders</CDBSidebarMenuItem>
+                </NavLink>
+
                 <NavLink exact to="/" onClick={logout} activeClassName="activeClicked">
                   <CDBSidebarMenuItem icon="chart-line">logout</CDBSidebarMenuItem>
                 </NavLink>

@@ -40,16 +40,22 @@ let result = await fetch("http://localhost:3001/register",{
     "Content-Type":"application/json",
     "Accept":"application/json"
   }
+}).then((res) => {
+  if (res.status === 201) {
+    toast("user added sucessfuly");
+    navigate('/')
+    //window.location.reload();
+  } else Promise.reject();
 })
-result = await result.json() 
+.catch((err) => toast("Something went wrong"));
 }
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm" >
+      <Container maxWidth="sm" style={{marginTop:'15px'}} >
         <Typography component="div" style={{ backgroundColor: '#d7d9db', height: '95vh' }} >
 
-        <form type="submit"  style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '80vh'}} >
+        <form  style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '80vh'}} >
      
      <div className ="form-inner">
        <h2 style={{paddingTop:"40px"}} > Signup</h2>< br/>
@@ -79,7 +85,7 @@ result = await result.json()
           labelPlacement="end"
         />
 </div>
-<Button type='submit' variant="outlined" color="primary" style={{float:"left"}} onClick={signup} >
+<Button variant="outlined" color="primary" style={{float:"left"}} onClick={signup} >
   Sign Up
 </Button>
      </div>

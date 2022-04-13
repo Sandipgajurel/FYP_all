@@ -17,6 +17,7 @@ import UserLogin from "./Containers/Userlogin/UserLogin";
 import MainPage from "./Containers/mainpage";
 import AppFoHomepage from "./Containers/Products/AppFoHomepage";
 import EditUser from "./Containers/UserUpdate";
+import ViewOrders from "./Containers/Orders/ViewOrders";
 const App = () => {
   const [show, setShow] = useState(true);
   return (
@@ -32,6 +33,7 @@ const App = () => {
      <Route  path='/Dashboard' element={<Dashboard />}></Route>
      <Route  path='/ProductAdd' element={<ProductAdd />}></Route>
      <Route  path='/ProductView' element={<ProductView />}></Route>
+     <Route  path='/orderview' element={<ViewOrders />}></Route>
      
 
      <Route  path='/editProduct/:productId' element={< EditProduct />}></Route>
