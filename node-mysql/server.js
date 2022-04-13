@@ -145,9 +145,20 @@ router.delete('/deleteproduct/:productId', deleteproduct);
 
 //orders
 router.post ('/addorder',addorder);
-router.get ('/getorder/:orderId',ordersView);
 router.patch('/updateorder/:orderId', orderupdate);
 router.delete('/deleteorder/:orderId', deleteorder);
-
+//router.get ('/getorder',ordersView);
+router.get('/getorder',(req,res) =>{    
+    var query = "select * from orders";
+        db_connection.query(query,(err,results)=>{
+            if(!err){
+                return res.send(results);
+            }
+            else{
+                return res.status(500).json(err);
+            }
+    
+    })}
+    );
 
 module.exports = router;
