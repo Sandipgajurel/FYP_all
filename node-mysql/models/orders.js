@@ -15,8 +15,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   orders.init({
     orderId: DataTypes.INTEGER,
-    orderDate: DataTypes.DATE,
-    orderQuantity: DataTypes.INTEGER
+    productId: DataTypes.STRING,
+    name: DataTypes.STRING,
+    address: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    price: DataTypes.STRING,
+    quantity: DataTypes.STRING,
+    singlePrice: DataTypes.STRING,
+    email: DataTypes.STRING,
+    date: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'orders',
