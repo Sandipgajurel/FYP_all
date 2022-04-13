@@ -16,11 +16,12 @@ import {
     CDBSidebarMenu,
     CDBSidebarMenuItem,
 } from 'cdbreact';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router'
 import axios from 'axios';
 import CardHomepage from './Products/CardHomepage';
 import { Container } from '@material-ui/core';
+import EditUser from './UserUpdate';
 
 const useStyles = makeStyles(theme => ({
     menuButton: {
@@ -31,18 +32,18 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+
 function Homepage({ handleClick, setShow }) {
     const classes = useStyles();
     const [products, setProducts] = useState([]);
     const [quantity, setQuantity] = useState(1);
-
-
+    const [email, setEmail]= useState("");
     const navigate = useNavigate()
     const logout = () => {
         localStorage.clear()
-        window.location.reload(false)
+       // window.location.reload(false)
     }
-
+   
 
     const getproduct = () => {
         axios
@@ -60,6 +61,7 @@ function Homepage({ handleClick, setShow }) {
 
     useEffect(() => {
         getproduct();
+      
     }, [])
 
     return (
@@ -86,12 +88,15 @@ function Homepage({ handleClick, setShow }) {
                                 {/* <NavLink exact to="" activeClassName="activeClicked">
                                     <CDBSidebarMenuItem icon="table" onClick={() => setShow(false)} >Your Cart</CDBSidebarMenuItem>
                                 </NavLink> */}
-                                <NavLink exact to="/profile" activeClassName="activeClicked">
-                                    <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
-                                </NavLink>
+                            
+                                     {/* <Link to={`/EditUser/${email}`}>
+                        <button type="button" title="Edit"
+                          className="btn btn-icon btn-sm" style={{ color: "white" }}><i className="fa fa-edit"></i></button>
+                      </Link> */}
+                            
 
 
-                                <NavLink exact to="/userlogin" onClick={logout} activeClassName="activeClicked">
+                                <NavLink exact to="/" onClick={logout} activeClassName="activeClicked">
                                     <CDBSidebarMenuItem icon="chart-line">logout</CDBSidebarMenuItem>
                                 </NavLink>
 

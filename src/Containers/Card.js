@@ -1,8 +1,5 @@
 import React from 'react'
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
@@ -55,35 +52,6 @@ const Cardimage = () => {
     getproduct();
   }, [])
 
-
-  // const [products, setProducts] = useState([]);
-  // const [name, setName] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [price, setPrice] = useState("")
-  // const [type, setType] = useState("")
-  // const [image, setImage] = useState("")
-
-  // const { productId } = useParams();
-
-  // useEffect(() =>{
-  //   const getproduct = async () =>{
-  //  const { data } = await  axios
-  //     .get(`http://localhost:3001/getproductwithid/${productId}`)
-
-  //    console.log(data)
-  //    setProducts(data);
-  //    setName(data.products.name)
-  //    setDescription(data.products.description)
-  //    setPrice(data.products.price)
-  //    setType(data.products.type)
-  //    setImage(data.products.image)
-
-  //    //setProductId(response.data[0].productId)
-
-  // }
-  // getproduct()
-
-  //  },[productId])
   return (
     <>
 
@@ -91,7 +59,7 @@ const Cardimage = () => {
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ paddingLeft: '20px', paddingRight: '20px' }}>
           <div>
-            <h1>Featured Products</h1>
+            <h1 style={{fontStyle:'italic'}}>Featured Products</h1>
             <div className='item-container' >
               {products.map((product) => (
                 <Card key={product.productId} className='shadow-md m2 p3 rounded'>

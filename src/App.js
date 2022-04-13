@@ -16,6 +16,7 @@ import { AuthProvider } from "./Containers/Userlogin/auth";
 import UserLogin from "./Containers/Userlogin/UserLogin";
 import MainPage from "./Containers/mainpage";
 import AppFoHomepage from "./Containers/Products/AppFoHomepage";
+import EditUser from "./Containers/UserUpdate";
 const App = () => {
   const [show, setShow] = useState(true);
   return (
@@ -23,6 +24,7 @@ const App = () => {
    <Routes>
    <Route  path='/login' element={< LoginApp />}></Route>
    <Route  path='/userlogin' element={< UserLogin />}></Route>
+   <Route  path='/EditUser/:email' element={< EditUser />}></Route>
    <Route  path='/' element={<MainPage />}></Route>
     {/* <Route exact path='/homepage' element={<HomePage />}></Route> */}
     <Route  path='/homepage' element={<AppFoHomepage />}></Route>
@@ -30,6 +32,8 @@ const App = () => {
      <Route  path='/Dashboard' element={<Dashboard />}></Route>
      <Route  path='/ProductAdd' element={<ProductAdd />}></Route>
      <Route  path='/ProductView' element={<ProductView />}></Route>
+     
+
      <Route  path='/editProduct/:productId' element={< EditProduct />}></Route>
       {/* <Route path='*' element={<Error />} /> */}
    </Routes>

@@ -14,6 +14,7 @@ import Select from '@mui/material/Select';
 import { Icon } from '@iconify/react';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import Badge from "@material-ui/core/Badge";
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import css from './navbar.css'
 //import ModalDialog from './ModalDialog';
 
@@ -57,6 +58,11 @@ const Navbar = () => {
           {/* shopping cart */}
           <Badge color="secondary" >
             <ShoppingCartIcon style={{ paddingLeft: '10px', enableBackground: 'new 0 0 24 24', height: '35', viewBox: '0 0 24 24', width: '35' }}
+            />{" "}
+          </Badge>
+          
+          <Badge color="secondary" >
+            <EmailOutlinedIcon style={{ paddingLeft: '10px', enableBackground: 'new 0 0 24 24', height: '35', viewBox: '0 0 24 24', width: '35' }}
             />{" "}
           </Badge>
 

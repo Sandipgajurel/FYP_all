@@ -21,7 +21,7 @@ const [type, setType] = useState("");
 const [image, setImage] = useState("");
 //const [productId, setProductId] = useState(null);
 
-toast.configure()
+toast.configure();
 
 const { productId } = useParams();
 const getdata  = () =>{
