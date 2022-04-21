@@ -3,12 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Container, Row, Table } from 'react-bootstrap';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import EditProduct from './editProduct';
 import { Link } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import { TextField, Button } from '@material-ui/core';
-import Cardimage from '../Card';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

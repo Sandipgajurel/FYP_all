@@ -61,7 +61,6 @@ function Homepage({ handleClick, setShow }) {
 
     useEffect(() => {
         getproduct();
-      
     }, [])
 
     return (

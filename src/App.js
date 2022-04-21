@@ -12,7 +12,6 @@ import ProductAdd from "./Containers/Products/ProductAdd";
 import ProductView from "./Containers/Products/ViewProduct";
 import EditProduct from "./Containers/Products/editProduct";
 import LoginApp from "./Containers/loginapp";
-import { AuthProvider } from "./Containers/Userlogin/auth";
 import UserLogin from "./Containers/Userlogin/UserLogin";
 import MainPage from "./Containers/mainpage";
 import AppFoHomepage from "./Containers/Products/AppFoHomepage";
