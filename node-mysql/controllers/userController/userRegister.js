@@ -17,8 +17,8 @@ exports.register = async(req,res,next) => {
           );
 
         if (row.length > 0) {
-            return res.status(201).json({
-                message: "The E-mail already in use",
+            return res.status(500).json({
+                message: "Email has been used already",
             });
         }
 

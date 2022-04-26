@@ -145,6 +145,7 @@ router.delete('/deleteproduct/:productId', deleteproduct);
 
 //orders
 router.post ('/addorder',addorder);
+
 router.patch('/updateorder/:orderId', orderupdate);
 router.delete('/deleteorder/:orderId', deleteorder);
 //router.get ('/getorder',ordersView);
