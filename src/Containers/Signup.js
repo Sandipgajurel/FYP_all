@@ -45,7 +45,11 @@ let result = await fetch("http://localhost:3001/register",{
     toast("user added sucessfuly");
     navigate('/')
     //window.location.reload();
-  } else Promise.reject();
+  } 
+  else if(res.status === 500) {
+    toast("Email has been used already");
+  }
+  else Promise.reject();
 })
 .catch((err) => toast("Something went wrong"));
 }

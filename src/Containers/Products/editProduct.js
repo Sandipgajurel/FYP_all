@@ -142,7 +142,9 @@ axios
         
         <div className ="form-group" >
         <Form.Label>Upload image</Form.Label>
-        <Form.Control type='file'  onChange={(e) =>setImage (e.target.files[0])} name='image' size="md" />
+        <Form.Control type='file' 
+         onChange={(e) =>setImage (e.target.files[0])} 
+          name='image' size="md" />
         </div>
 
 {/* <div className="custom-file" style={{paddingBottom:"10px",float:"right",marginRight:'15px'}}>

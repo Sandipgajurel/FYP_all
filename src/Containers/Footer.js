@@ -13,7 +13,7 @@ import {
 
 const Footer = () => <>
       
-        <AppBar position="static" elevation={0} component="footer" style={{backgroundColor:'#1d1e1f',
+        <AppBar position="static" elevation={0} component="footer" style={{backgroundColor:'#333',
             
             marginTop:'auto',
             width: "100%",
