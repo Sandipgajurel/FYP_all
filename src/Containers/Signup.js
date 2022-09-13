@@ -49,7 +49,8 @@ let result = await fetch("http://localhost:3001/register",{
   else if(res.status === 500) {
     toast("Email has been used already");
   }
-  else Promise.reject();
+  else {toast("something went wrong")}
+  Promise.reject();
 })
 .catch((err) => toast("Something went wrong"));
 }
@@ -89,7 +90,7 @@ let result = await fetch("http://localhost:3001/register",{
           labelPlacement="end"
         />
 </div>
-<Button variant="outlined" color="primary" style={{float:"left"}} onClick={signup} >
+<Button variant="outlined" color="primary" style={{float:"left"}}  onClick={signup} >
   Sign Up
 </Button>
      </div>

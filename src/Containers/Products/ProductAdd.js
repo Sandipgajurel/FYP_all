@@ -8,7 +8,7 @@ import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Navbar from '../Navbar';
 import { useNavigate } from 'react-router'
 import { Toast } from 'react-bootstrap';
 export default function ProductAdd() {
@@ -49,9 +49,12 @@ e.preventDefault()
     <React.Fragment>
       <CssBaseline />
       <div className="p-3 mb-2 bg-secondary" >
+     
       <Container maxWidth="md" >
         <Typography component="div" style={{ backgroundColor: '#d7d9db', height:'98vh' }} >
         <div className="card-header" style={{textAlign:'center'}}>
+      
+          
           <h3 className="card-title text-dark" >Add New Product</h3>
         </div>
         <form onSubmit={addProductHandler} method='POST' encType='multipart/form-data' style={{ display:'flex', paddingLeft:'110px',display: 'flex',  justifyContent:'center', alignItems:'center' }} >
@@ -70,7 +73,7 @@ e.preventDefault()
 <div >
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name">price</label> < br />
-         <TextField  variant="outlined" type="number" min="0" value={price} onChange={(e)=>setPrice(e.target.value)} required style={{paddingBottom:"10px",width:'300px'}} />
+         <TextField  variant="outlined" type="number" min="0" value={price} InputProps={{  inputProps: {  max: 99999, min: 0  }}} onChange={(e)=>setPrice(e.target.value)} required style={{paddingBottom:"10px",width:'300px'}} />
         </div>
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name"> Product Type</label> < br />

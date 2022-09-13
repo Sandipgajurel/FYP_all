@@ -22,7 +22,8 @@ import axios from 'axios';
 import CardHomepage from './Products/CardHomepage';
 import { Container } from '@material-ui/core';
 import EditUser from './UserUpdate';
-
+import image1 from '../img/7.jpg';
+import BackToTopButton from './ScrollTop';
 const useStyles = makeStyles(theme => ({
     menuButton: {
         marginRight: theme.spacing(2),
@@ -70,56 +71,34 @@ function Homepage({ handleClick, setShow }) {
 
 
             {/* sidebar */}
-            <div>
-                <div style={{ display: 'flex', height: '100%', overflow: 'scroll initial' }}>
-                    <CDBSidebar textColor="#fff" backgroundColor="#333">
-                        <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
-                            <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-                                Menu
-                            </a>
-                        </CDBSidebarHeader>
-
-                        <CDBSidebarContent className="sidebar-content">
-                            <CDBSidebarMenu>
-                                <NavLink exact to="/producttouser" activeClassName="activeClicked">
-                                    <CDBSidebarMenuItem icon="columns">Products</CDBSidebarMenuItem>
-                                </NavLink>
-                                {/* <NavLink exact to="" activeClassName="activeClicked">
-                                    <CDBSidebarMenuItem icon="table" onClick={() => setShow(false)} >Your Cart</CDBSidebarMenuItem>
-                                </NavLink> */}
-                            
-                                    
-                            
-
-
-                                <NavLink exact to="/" onClick={logout} activeClassName="activeClicked">
-                                    <CDBSidebarMenuItem icon="chart-line">logout</CDBSidebarMenuItem>
-                                </NavLink>
-
-                                <NavLink exact to="/hero404" target="_blank" activeClassName="activeClicked">
-                                    <CDBSidebarMenuItem icon="exclamation-circle">404 page</CDBSidebarMenuItem>
-                                </NavLink>
-                            </CDBSidebarMenu>
-                        </CDBSidebarContent>
-
-
-                    </CDBSidebar>
-
+            <div style={{backgroundColor:'black'}}>
+            <img src={image1} alt="*" style={{width:'100%', height:'500px'}} />
                     {/* card inside sidebar */}
-                    <Container style={{ width: '100%', whiteSpace: 'nowrap', overflowX: 'scroll', alignItems: 'center' }}>
+                    <Container style={{ width: 'auto', background: `rgb(64,64,113)`,
+background: `linear-gradient(90deg, rgba(64,64,113,1) 0%, rgba(93,92,92,1) 100%)`,  alignItems: 'center'
+,borderRadius: '20px',
+  //padding: '40px',
+  marginRight:'10px',
+  marginLeft:'35px',
+  marginTop:'15px',
+  //marginBottom:'10px',
+  paddingBottom:'15px'
+//   ,
+//   width: 'auto',
+//   height: '100',
+}}>
                         <h1 >Featured Products</h1>
-                        <section style={{ display: 'flex', flexDirection: 'row', width: '100vh' }} >
-
+                        <div className='item-container'>
+                        {/* <section style={{ display: 'flex', flexDirection: 'row', width: '100vh' }} > */}
                             {products.map((items) => (
                                 <CardHomepage key={items.productId} quantity={items.quantity = 1} items={items} handleClick={handleClick} />
                             ))}
-
-
-                        </section>
+                            </div>
+                        {/* </section> */}
                     </Container>
-                </div>
+               
             </div>
-
+                 <BackToTopButton />             
             <Footer />
         </div>
     );

@@ -3,13 +3,15 @@ import { useState } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button} from '@material-ui/core';
 import axios from 'axios';
 import { useNavigate } from 'react-router'
 import { useParams } from 'react-router-dom'
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
+
 
 const EditProduct = () => {
 const [data, setData] = useState([]);
@@ -114,7 +116,9 @@ axios
       <div className="p-3 mb-2 bg-secondary" >
       <Container maxWidth="md" >
         <Typography component="div" style={{ backgroundColor: '#d7d9db', height:'98vh' }} >
+         
         <div className="card-header" style={{textAlign:'center'}}>
+      
           <h3 className="card-title text-dark" >Edit Product</h3>
         </div>
         <form type="submit" onSubmit={updateProduct} method='POST' encType='multipart/form-data' style={{ display:'flex', paddingLeft:'110px',display: 'flex',  justifyContent:'center', alignItems:'center' }}  >
@@ -133,7 +137,7 @@ axios
 <div >
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name">price</label> < br />
-         <TextField id= "price" variant="outlined" type="number" min="0" value={price} onChange={(e) =>{setPrice(e.target.value)}}  required style={{paddingBottom:"10px",width:'300px'}} />
+         <TextField id= "price" variant="outlined" type="number" min="0" InputProps={{  inputProps: {  max: 99999, min: 0  }}} value={price} onChange={(e) =>{setPrice(e.target.value)}}  required style={{paddingBottom:"10px",width:'300px'}} />
         </div>
         <div className ="form-group">
          <label style={{paddingTop:"10px",paddingBlockEnd:'5px'}} htmlFor="name"> Product Type</label> < br />

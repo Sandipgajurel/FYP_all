@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const ProductView = () => {
   const [products, setProducts] = useState([]);
@@ -34,25 +39,68 @@ const ProductView = () => {
 
 
 
-  const id = products.map(datas => (datas.productId))
-  const deleteProduct = () => {
-    axios
-      .delete(
-        'http://localhost:3001/deleteproduct/' + id)
-      .then((res) => {
-        if (res.status === 200) {
-          toast("product successfully deleted");
-          window.location.reload();
-        } else Promise.reject();
-      })
-      .catch((err) => toast("Something went wrong"));
+  // const id = products.map(datas => (datas.productId))
+  // const deleteProduct = () => {
+  //   axios
+  //     .delete(
+  //       'http://localhost:3001/deleteproduct/' + id)
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         toast("product successfully deleted");
+  //         window.location.reload();
+  //       } else Promise.reject();
+  //     })
+  //     .catch((err) => toast("Something went wrong"));
+  // };
+  const deleteProduct = (productId) => {
+    if (window.confirm('Are you sure?')) {
+      axios
+        .delete(
+          'http://localhost:3001/deleteproduct/' + productId)
+        .then((res) => {
+          if (res.status === 200) {
+            toast("product successfully deleted");
+            window.location.reload();
+          } else Promise.reject();
+        })
+        .catch((err) => toast("Something went wrong"));
+    }
   };
+
   return (
     <Container fluid>
       <Row>
         <div>
           <div className="card-header" style={{ textAlign: 'center', backgroundColor: "#b2bbbf" }}>
-            <h3 className="card-title text-dark" >View Products</h3>
+    
+          <Box sx={{ width:'100px' }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Pages</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Options"
+        >
+           <MenuItem>
+           <Link to={`/`}>Logout</Link>
+           </MenuItem>
+           <MenuItem>
+           <Link to={`/Dashboard`}>Dashboard</Link>
+           </MenuItem>
+           <MenuItem>
+           <Link to={`/ProductAdd`}>Add product</Link>
+           </MenuItem>
+           <MenuItem>
+           <Link to={`/ProductView`}>View products</Link>
+           </MenuItem>
+           <MenuItem>
+           <Link to={`/orderview`}>View Orders</Link>
+           </MenuItem>
+        </Select>
+      </FormControl>
+    </Box>
+    
+     <h3 className="card-title text-dark" >View Products</h3>
           </div>
           {/* <li >name:{result.products.name}</li>
       <li >description:{result.products.description}</li>
@@ -79,7 +127,7 @@ const ProductView = () => {
                     <td key={data.description}>{data.description}</td>
                     <td key={data.price}>{data.price}</td>
                     <td key={data.type}>{data.type}</td>
-                    <td key={data.image}>{data.image}</td>
+                    <td key={data.image}><img style={{height:'50px', width:'55px'}} src={`http://localhost:3001/${data.image} `} alt="" /></td>
                     <td>
                       <Link to={`/editProduct/${data.productId}`}>
                         <button type="button" title="Edit"
@@ -87,7 +135,7 @@ const ProductView = () => {
                       </Link>
 
                       <button type="button" title="Delete" data-type="confirm"
-                        onClick={() => { deleteProduct() }}
+                        onClick={() => deleteProduct(data.productId)}
                         style={{ color: "white" }} className="btn btn-icon btn-sm js-sweetalert" ><i><DeleteTwoToneIcon /></i></button>
                     </td>
                   </tr>
