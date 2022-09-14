@@ -11,11 +11,9 @@ if(row.length > 0){
         orders:row[0]
     });
 }
-
 res.json({
     message:"No orders found"
 });
-
 
 } catch(err){
     next(err);

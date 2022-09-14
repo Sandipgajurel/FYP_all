@@ -35,7 +35,6 @@ exports.register = async(req,res,next) => {
                 message: "The user has been successfully inserted.",
             });
         }
-        
     }catch(err){
         next(err);
     }

@@ -90,9 +90,20 @@ router.post('/login',[
     body('password',"The Password must be of minimum 4 characters length").notEmpty().trim().isLength({ min: 4 }),
 ],login);
 
+router.get('/getusers',(req,res) =>{    
+    var query = "select * from users";
+        db_connection.query(query,(err,results)=>{
+            if(!err){
+                return res.send(results);
+            }
+            else{
+                return res.status(500).json(err);
+            }
+    
+    })}
+    )
 
-
-router.get('/getuser:/email',getUser);
+//router.get('/getuser',getUser);
 
 
 
