@@ -51,8 +51,6 @@ const Cardimage = () => {
 
   return (
     <>
-
-
       <div style={{ display: 'flex',  flexDirection: 'column' }}>
         <div style={{ paddingLeft: '15px', paddingRight: '15px' }}>
           <div>
