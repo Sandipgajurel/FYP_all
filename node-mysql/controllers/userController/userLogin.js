@@ -48,7 +48,8 @@ exports.login = async (req,res,next) =>{
 
         return res.json({
             token:theToken,
-            email:req.body.email
+            email:req.body.email,
+            message: "Login Success"
         });
 
     }
