@@ -4,17 +4,14 @@ import { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import SendIcon from "@mui/icons-material/Send";
-import { Box } from "@material-ui/core";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea, CardActions } from "@mui/material";
 import Footer from "../Footer";
-import { FormControl } from '@mui/material';
 
 const CartForUser = ({ cart, setCart, handleChange }) => {
   const [pric, setPrice] = useState(0);
@@ -47,7 +44,8 @@ const CartForUser = ({ cart, setCart, handleChange }) => {
   }
   toast.configure();
 
-  async function addorder(req, res, next) {
+  async function addorder(event, req, res, next) {
+    event.preventDefault();
     let price = pric.toString();
     let name = nme.toString();
     let productId = pid.toString();
@@ -72,11 +70,11 @@ const CartForUser = ({ cart, setCart, handleChange }) => {
       .then((res) => {
         if (res.status === 201) {
           toast("order successfully added");
+         
         } else Promise.reject();
       })
       .catch((err) => toast("Something went wrong"));
   }
-
 
   const handleRemove = (productId) => {
     const arr = cart.filter((items) => items.productId !== productId);
@@ -201,45 +199,45 @@ const CartForUser = ({ cart, setCart, handleChange }) => {
                   fontSize: "2rem",
                 }}
               >
-                
                 Check Out
               </h1>
               <label> Address</label> <br />
-              <FormControl >
-              <TextField
-                id="outlined-basic"
-                type="text"
-                required
-                value={address}
-                onChange={(e) => {
-                  setAddress(e.target.value);
-                }}
-                variant="outlined"
-                
-              />
-              <br />
-              <label> Phone</label> <br />
-              <TextField
-                type="number"
-                variant="outlined"
-                required
-                InputProps={{ inputProps: { max: 9999999999, min: 0 } }}
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                }}
-                
-              />
-              <br />
-              <Button
-                variant="outlined"
-                style={{ marginTop: "5px" }}
-                onClick={addorder}
-                endIcon={<SendIcon />}
-              >
-                Checkout
-              </Button>
-              </FormControl>
+              {/* <FormControl > */}
+              <form onSubmit={addorder}>
+                <TextField
+                  id="outlined"
+                  type="text"
+                  required
+                  value={address}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                  variant="outlined"
+                />
+                <br />
+                <label> Phone</label> <br />
+                <TextField
+                  type="number"
+                  variant="outlined"
+                  required
+                  InputProps={{ inputProps: { max: 9999999999, min: 0 } }}
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
+                />
+                <br />
+                <Button
+                  variant="outlined"
+                  style={{ marginTop: "5px" }}
+                  type="submit"
+                  //  onClick={addorder}
+                  endIcon={<SendIcon />}
+                >
+                  Checkout
+                </Button>
+              </form>
+              {/* </FormControl> */}
             </div>
           </CardActions>
         </Card>
