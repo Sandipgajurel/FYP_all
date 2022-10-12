@@ -18,7 +18,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const CardHomepage = ({ items, handleClick }) => {
+const FilterByPrice = ({ items, handleClick }) => {
   //add value of quantity = 1 remain
   let { name, description, quantity, price, type, image, productId } = items;
 
@@ -35,8 +35,10 @@ const CardHomepage = ({ items, handleClick }) => {
                     className="shadow-md m2 p3 rounded"
                     style={{
                       width: "auto",
-                      // background: `rgb(64,64,113)`,
-                      // background: `radial-gradient(circle, rgba(64,64,113,1) 0%, rgba(20,20,20,1) 100%)`,
+                    //   background: `rgb(64,64,113)`,
+                    //   background: `radial-gradient(circle, rgba(64,64,113,1) 0%, rgba(20,20,20,1) 100%)`,
+
+                    backgroundColor:'white',
                       boxShadow: `rgba(100, 100, 111, 0.2) 0px 7px 29px 0px`
                     }}
                   >
@@ -65,7 +67,7 @@ const CardHomepage = ({ items, handleClick }) => {
                           </Grid>
                         </Grid>
                       </Box>
-                      <h5 style={{ fontWeight: "bold"}}>
+                      <h5 style={{ fontWeight: "bold", color: "black" }}>
                         {" "}
                         <AttachMoneyIcon />
                         {price}
@@ -94,4 +96,4 @@ const CardHomepage = ({ items, handleClick }) => {
   );
 };
 
-export default CardHomepage;
+export default FilterByPrice;

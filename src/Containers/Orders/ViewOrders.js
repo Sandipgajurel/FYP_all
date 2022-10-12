@@ -68,11 +68,12 @@ toast.configure();
 
   return (
     <Container fluid style={{
+    
       background: `rgb(49,49,73)`,
       background: `linear-gradient(90deg, rgba(49,49,73,1) 0%, rgba(65,74,87,1) 100%)`
     }}>
       <Row>
-        <div>
+        <div >
           <div className="card-header" style={{
             textAlign: 'center',
             background: `rgb(49,49,73)`,
@@ -112,7 +113,7 @@ toast.configure();
           {/* <li >name:{result.products.name}</li>
     <li >description:{result.products.description}</li>
 */}
-          {/*mileko***************
+          {/*correct***************
          <table className="table table-sm table-dark">
           <thead className='thead-dark'>
             <tr>
@@ -159,7 +160,8 @@ toast.configure();
 
 
 
-
+<div style={{overflowX:'scroll'
+}}>
           <Table size="lg" striped bordered hover>
             <tbody>
               {
@@ -208,6 +210,7 @@ toast.configure();
               }
             </tbody>
           </Table>
+          </div>
         </div>
       </Row>
      

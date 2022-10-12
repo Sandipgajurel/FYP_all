@@ -10,6 +10,7 @@ import { CardActionArea } from "@mui/material";
 import dbimg from '../img/9.jpg';
 import Header from "./Nav";
 import BackToTopButton from "./ScrollTop";
+import FilterItem from "./FilterItem";
 
 function Dashboard() {
   const [count, setCount] = useState("");
@@ -73,20 +74,21 @@ function Dashboard() {
        <Header />
       </div>
 
-      <div style={{ display: "flex", flexDirection: "row"}}>
+      <div style={{ display: "flex", flexDirection: "column"}}>
         <div
           className="col-md-10"
           style={{
-            paddingTop:'100px',
+            paddingTop:'150px',
             width: "100%",
             paddingBottom: "100px",
-            background: `rgb(0,0,80)`,
-            background: `linear-gradient(90deg, rgba(0,0,80,1) 0%, rgba(50,32,32,1) 100%)`,
+            backgroundColor:'#f2ebe9'
+            // background: `rgb(0,0,80)`,
+            // background: `linear-gradient(90deg, rgba(0,0,80,1) 0%, rgba(50,32,32,1) 100%)`,
           }}
         >
           <div>
           {/* <img src={dbimg} alt="*" style={{ width: '100%', height: 'auto' }} /> */}
-          <h1 style={{ fontStyle: "italic", color: "white" }}>
+          <h1 style={{ fontStyle: "italic", color: "black", fontWeight:'bold'}}>
             ADMIN DASHBOARD
           </h1>
           </div>
@@ -105,6 +107,9 @@ function Dashboard() {
                   minWidth: "300px",
                   background: `rgb(97,97,107)`,
                   background: `linear-gradient(90deg, rgba(97,97,107,1) 0%, rgba(87,87,96,1) 100%)`,
+                
+                  boxShadow: `rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px`
+
                 }}
               >
                 <CardActionArea style={{ alignItems: "center" }}>
@@ -120,8 +125,8 @@ function Dashboard() {
                       // }}
 
                       style={{
-          backgroundImage: `linear-gradient(to right, #200122 0%, #6f0000  51%, #200122  100%)`,
-          margin: `10px`,
+                     backgroundImage: `linear-gradient(to right, #141e30, #243b55)`,
+           margin: `10px`,
           padding:` 15px 45px`,
           textAlign: 'center',
           textTransform: 'uppercase',
@@ -156,6 +161,8 @@ function Dashboard() {
                   minWidth: "300px",
                   background: `rgb(97,97,107)`,
                   background: `linear-gradient(90deg, rgba(97,97,107,1) 0%, rgba(87,87,96,1) 100%)`,
+                  boxShadow: `rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px`
+
                 }}
               >
                 <CardActionArea style={{ alignItems: "center" }}>
@@ -163,7 +170,7 @@ function Dashboard() {
                     <h1
                       style={{
                       
-          backgroundImage: `linear-gradient(to right, #200122 0%, #6f0000  51%, #200122  100%)`,
+                        backgroundImage: `linear-gradient(to right, #141e30, #243b55)`,
           margin: `10px`,
           padding:` 15px 45px`,
           textAlign: 'center',
@@ -198,6 +205,8 @@ function Dashboard() {
                   minWidth: "300px",
                   background: `rgb(97,97,107)`,
                   background: `linear-gradient(90deg, rgba(97,97,107,1) 0%, rgba(87,87,96,1) 100%)`,
+                  boxShadow: `rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px`
+
                 }}
               >
                 <CardActionArea style={{ alignItems: "center" }}>
@@ -205,7 +214,7 @@ function Dashboard() {
                     <h1
                       style={{
                         
-          backgroundImage: `linear-gradient(to right, #200122 0%, #6f0000  51%, #200122  100%)`,
+                        backgroundImage: `linear-gradient(to right, #141e30, #243b55)`,
           margin: `10px`,
           padding:` 15px 45px`,
           textAlign: 'center',
@@ -231,8 +240,15 @@ function Dashboard() {
             </div>
           </div>
           <Cardimage />
+
+          <div>
+  {/* filter item based on price */}
+  <FilterItem />
+</div>
         </div>
+     
       </div>
+   
 <BackToTopButton />
       {/* <button type="button" class="btn btn-primary" onClick={routeChange}>Add products</button> */}
       <div style={{ position: "static", bottom: "0", width: "100%", justifyContent:'center' }}>

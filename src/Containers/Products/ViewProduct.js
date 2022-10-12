@@ -105,6 +105,7 @@ const ProductView = () => {
           {/* <li >name:{result.products.name}</li>
       <li >description:{result.products.description}</li>
  */}
+        <div style={{overflowX:'auto'}}>
           <table className="table table-sm table-dark">
             <thead className='thead-dark'>
               <tr>
@@ -145,6 +146,7 @@ const ProductView = () => {
               }
             </tbody>
           </table>
+          </div>
         </div>
       </Row>
     </Container>
